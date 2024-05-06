@@ -14,8 +14,8 @@ function Sidebar() {
         </div>
         <a href="https://zemprofiles.vercel.app" className="titlelink">
           <div className="title">
-            <p className="dev">Dev.</p>
-            <p className="find">Find</p>
+            <p className="dev">Zem</p>
+            <p className="find">Profiles</p>
           </div>
         </a>
         <div className="theme">
