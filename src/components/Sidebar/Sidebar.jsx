@@ -31,7 +31,7 @@ function Sidebar() {
       <div className="headline">Discover and Connect with Developers!</div>
       <div className="description">
         <a
-          href=" https://github.com/Zemerik/ZemProfiles#how-to-add-your-profile?"
+          href="https://github.com/Zemerik/ZemProfiles/blob/main/CONTRIBUTING.md"
           target="_blank"
           rel="noreferrer"
         >
