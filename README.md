@@ -24,7 +24,7 @@ ZemProfiles stands as an open-source platform, providing users with the opportun
 
 ## 🤝 Contributing:
 
-Contributions are always welcome and appreciated which make enhance's projects like these! **Kindly visit the [CONTRIBUTING.md](https://github.com/Zemerik/ZemProfiles/blob/main/CONTRIBUTING.md) file for more information**
+Contributions are always welcome and appreciated! **Kindly visit the [CONTRIBUTING.md](https://github.com/Zemerik/ZemProfiles/blob/main/CONTRIBUTING.md) file for more information**
 
 ## 💁 Support:
 
