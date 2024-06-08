@@ -18,6 +18,10 @@
   Discover & Connect with Developers
 </p>
 
+<p align = "center">
+  <img src = "public/Screenshot.png">
+</p>
+
 ## ➕ Adding your Profile:
 
 1. Fork a copy of this Repository on your Github account by clicking below,
@@ -51,11 +55,13 @@
 ```
 
 >[!Note]
-> You are free to use any picture other than your github username, as long as it is `png`/`jpg`/`jpeg`. You may require to **upload** your picture in one either the `public/data` directory or create a **New Folder** in that directory. 
+> You are free to use any picture other than your github username, as long as it is `png`/`jpg`/`jpeg`. You may require to **upload** your picture in either the `public/data` directory or create a **New Folder** in that directory. 
 
-> [!Important]
-> Your Bio must not be more than **30** Words. <br>
-> If you do not have a Portfolio currently, you can give a link to other website which we recommend is not Github, X (Twitter) or LinkedIn. 
+> [!Caution]
+> Your Bio must not be more than **30** Words. 
+
+> [!Tip]
+> If you do not have a Portfolio currently or one of the social accounts, you can give a link to other website. 
 
 4. After **saving** the file, head over to the `ProfilesList.json` file in the `src` directory and edit the file with the code,
 
@@ -82,5 +88,7 @@ For any kind of support or inforrmation, you are free to join our **Discord Serv
 </h1>
 
 <p align = "center">
-  Don't forget to leave a ⭐
+  Don't forget to leave a ⭐ 
+  <br>
+  Made with 💖 by <a href = "https://github.com/Zemerik">Hemang Yadav (Zemerik)</a>
 </p>
