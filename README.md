@@ -18,6 +18,10 @@
   Discover & Connect with Developers
 </p>
 
+<p align = "center">
+  <img src = "public/Screenshot.png">
+</p>
+
 ## ❗About:
 
 ZemProfiles stands as an open-source platform, providing users with the opportunity to connect seamlessly with fellow developers. This connectivity is fostered through the simple act of adding one's Profile to the platform, thus creating a digital hub where like-minded individuals can engage, collaborate, and share insights within the expansive realm of software development. With its user-friendly interface and inclusive community ethos, ZemProfiles serves as a dynamic space where connections are forged, ideas are exchanged, and innovation thrives.
