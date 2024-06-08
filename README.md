@@ -50,4 +50,6 @@ Thanks to all Contributers!
 
 <p align = "center">
   Don't forget to leave a ⭐
+  <br>
+  Made with 💖 by <a href = "https://github.com/Zemerik">Hemang Yadav (Zemerik)</a>
 </p>
