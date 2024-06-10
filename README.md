@@ -30,13 +30,55 @@ ZemProfiles stands as an open-source platform, providing users with the opportun
 
 ## ⭐ Features:
 
-- [x] 👀 Dark & Light Theme
-- [x] 📱 Responsive UI Design supported on all devices
-- [x] 📃 List of all Developers
-- [x] 🔍 Search Bar
-- [x] 🏆 Open Source
+<table align = "center">
+  <tr>
+    <td>
+      <img src = "public/horizontal_screenshot.png" style = "height: 400px; width: 250px">
+    </td>
+    <td>
+      <p align = "center">
+        👀 Dark & Light Theme
+      </p>
+      <br>
+      <p align = "center">
+        📱 Responsive UI Design supported on all devices
+      </p>
+      <br>
+      <p align = "center">
+        📃 List of all Developers
+      </p>
+      <br>
+      <p align = "center">
+        🔍 Search Bar
+      </p>
+      <br>
+      <p align = "center">
+        🏆 Open Source
+      </p>
+    </td>
+    <td>
 
-😃 Want to add more features? Open an [Issue](https://github.com/Zemerik/Zemprofiles/issues) and let us know!      
+  <img src = "public/vertical_screenshot.png" style = "height: 400px; width: 250px">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p align = "right">
+       ▶️ Want to Add More
+      </p>
+    </td>
+    <td>
+      <p align = "center">
+       🚥 Features? Open an <a href = "https://github.com/Zemerik/Zemprofiles/issues">Issue</a> 🚥
+      </p>
+    </td>
+    <td>
+      <p align = "left">
+        and Let us Know! ◀️
+      </p> 
+    </td>
+  </tr>
+</table>
 
 ## 🤝 Contributing:
 
