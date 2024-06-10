@@ -26,6 +26,18 @@
 
 ZemProfiles stands as an open-source platform, providing users with the opportunity to connect seamlessly with fellow developers. This connectivity is fostered through the simple act of adding one's Profile to the platform, thus creating a digital hub where like-minded individuals can engage, collaborate, and share insights within the expansive realm of software development. With its user-friendly interface and inclusive community ethos, ZemProfiles serves as a dynamic space where connections are forged, ideas are exchanged, and innovation thrives.
 
+[![RepoRater](https://repo-rater.eddiehub.io/api/badge?owner=Zemerik&name=Zemprofiles)](https://repo-rater.eddiehub.io/rate?owner=Zemerik&name=ZemProfiles)
+
+## ⭐ Features:
+
+- [x] 👀 Dark & Light Theme
+- [x] 📱 Responsive UI Design supported on all devices
+- [x] 📃 List of all Developers
+- [x] 🔍 Search Bar
+- [x] 🏆 Open Source
+
+😃 Want to add more features? Open an [Issue](https://github.com/Zemerik/Zemprofiles/issues) and let us know!      
+
 ## 🤝 Contributing:
 
 Contributions are always welcome and appreciated! **Kindly visit the [CONTRIBUTING.md](https://github.com/Zemerik/ZemProfiles/blob/main/CONTRIBUTING.md) file or the video below for more information**
