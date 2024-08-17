@@ -1,0 +1,13 @@
+{
+  "name": "Axorax",
+  "location": "Bangladesh",
+  "bio": "I like to do stuff... 😗",
+  "avatar": "https://github.com/axorax.png",
+  "portfolio": "https://axorax.github.io",
+  "skills": ["JavaScript", "Python", "HTML", "CSS", "TypeScript", "Lua"],
+  "social": {
+    "GitHub": "https://github.com/Axorax",
+    "Twitter": "https://x.com/axorax_",
+    "LinkedIn": "https://www.linkedin.com/in/axorax"
+  }
+}
