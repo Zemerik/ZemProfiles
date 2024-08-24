@@ -20,7 +20,7 @@
 </p>
 
 <p align = "center">
-  <img src = "public/screenshot.png">
+  <img src = "public/Screenshot.png">
 </p>
 
 ## ❗About:
