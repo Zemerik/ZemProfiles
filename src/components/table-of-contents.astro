@@ -1,0 +1,32 @@
+---
+const { headings } = Astro.props;
+---
+
+{
+  headings.length > 0 ? (
+    <div class='px-2'>
+      <h5 class='font-semibold uppercase text-brand-secondary'>on this page</h5>
+      <ul class='list-none m-0 p-0'>
+        {headings.map((heading) => {
+          const { depth, slug, text } = heading;
+
+          const getPaddingDepth = {
+            [2]: '4',
+            [3]: '6',
+            [4]: '8',
+            [5]: '10',
+            [6]: '12',
+          };
+
+          return (
+            <li data-depth={depth} class={`m-0 py-0.5 pl-${getPaddingDepth[depth]}`}>
+              <a href={`#${slug}`} class='font-[system-ui] text-[0.65rem] p-1 no-underline text-violet-300'>
+                {text}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  ) : null
+}

@@ -1,0 +1,99 @@
+---
+import { Image } from 'astro:assets';
+import ClickToCopyEmail from './click-to-copy-email';
+
+const locations = [
+  // {
+  //   name: 'United Kingdom',
+  //   flag: '🇬🇧',
+  //   current: true,
+  // },
+  // {
+  //   name: 'Panama City, Panama',
+  //   flag: '🇵🇦',
+  //   current: true,
+  // },
+  // {
+  //   name: 'Medellín, Colombia',
+  //   flag: '🇨🇴',
+  //   current: false,
+  // },
+  // {
+  //   name: 'Los Angeles, USA',
+  //   flag: '🇺🇲',
+  //   current: false,
+  // },
+  // {
+  //   name: 'New Orleans, USA',
+  //   flag: '🇺🇲',
+  //   current: false,
+  // },
+  // {
+  //   name: 'Montreal, Canada',
+  //   flag: '🇨🇦',
+  //   current: false,
+  // },
+  // {
+  //   name: 'Toronto, Canada',
+  //   flag: '🇨🇦',
+  //   current: false,
+  // },
+];
+---
+
+<div class='grid gap-4 rounded border border-brand-outline bg-surface/50 px-4 sm:px-6 py-8'>
+  <Image
+    width={60}
+    height={60}
+    alt='Hemang Yadav'
+    src='https://avatars.githubusercontent.com/u/133865660?v=4'
+    class='block rounded-full border-2 border-brand-text h-16 w-16 m-0 mx-auto'
+  />
+  <div>
+    <p  class='text-brand-secondary text-center'>
+      <strong style = "color: white;">
+        HEMANG YADAV
+      </strong>
+    </p>
+    <h5 class='mb-0.5 text-base text-center leading-6 font-semibold uppercase text-brand-secondary'>FOUNDER + MAINTAINER</h5>
+    <p class='m-0 mb-6 text-sm text-center'>
+      <p class='text-brand-secondary'>💻Passionate Developer + 💪Expertise in Web-Development + 🎓Open-Source Enthusiast + 🏆Content Creator</p>
+    </p>
+    <!-- <div class='mb-6'>
+      <strong class='block text-center text-base'>I'm currently in</strong>
+      <ul class='p-0 m-0 list-none text-sm'>
+        {
+          locations.map((location) => {
+            const { name, flag, current } = location;
+            return (
+              <li class={`p-0 m-0 block text-center ${current ? '' : 'line-through'}`}>
+                {name}{' '}
+                <span class='inline-block mt-2 line-through' aria-label='country flag'>
+                  {flag}
+                </span>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div> -->
+    <ClickToCopyEmail />
+  </div>
+  <hr class='my-1 border-brand-outline' />
+  <a
+    href='https://x.com/Zemerik_X'
+    target='_blank'
+    rel='noopener'
+    class='not-prose flex items-center justify-center gap-3 no-underline text-brand-secondary text-sm text-center py-2 px-2 transition-all duration-300 rounded border border-brand-outline bg-surface hover:text-brand-text hover:bg-brand-muted/10'
+  >
+    <svg xmlns='http://www.w3.org/2000/svg' class='h-4 w-4' fill='currentColor' viewBox='0 0 24 24'
+      ><path
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'
+      ></path></svg
+    >
+    Zemerik_X
+  </a>
+</a>
+</div>

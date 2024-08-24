@@ -1,0 +1,108 @@
+---
+import Layout from './layout';
+import { search } from '../utils/all-collections';
+
+import '@fontsource/inconsolata/300.css';
+import '@fontsource/inconsolata/400.css';
+import '@fontsource/inconsolata/500.css';
+import '@fontsource/inconsolata/700.css';
+import '@fontsource/inconsolata/900.css';
+
+const name = 'ZemProfiles';
+const siteUrl = 'https://zemprofiles.vercel.app';
+const keywords = [
+  'Developer Advocate',
+  'Technical Writing',
+  'Product Marketing'
+];
+
+const { type, title, description, slug, image, tags, fullWidth = false, canonical } = Astro.props;
+
+const htmlTitle = `${name} | ${title}`;
+const canonicalHref = canonical ? canonical : `${siteUrl}${slug}`;
+
+const ogImage = image ? image : `${siteUrl}`;
+const seoKeywords = tags ? tags : keywords;
+
+const isProduction = import.meta.env.PROD;
+---
+
+<!-- scroll-pt is for the jumplink headings offset -->
+<html lang='en' class="scroll-pt-[100px]">
+  <head>
+    <meta charset='utf-8' />
+
+    <title>{htmlTitle}</title>
+    <link rel='canonical' href={canonicalHref} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ZemProfiles"
+      href={`${Astro.site}rss.xml`}
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta name='description' content={description} />
+    <meta name='image' content={ogImage} />
+    <meta name='image:alt' content={description} />
+    <meta name='keywords' content={seoKeywords.join(', ')} />
+
+    <!-- Facebook -->
+    <meta property='og:type' content={type} />
+    <meta property='og:title' content={htmlTitle} />
+    <meta property='og:url' content={`${siteUrl}${slug}`} />
+    <meta property='og:description' content={description} />
+    <meta property='og:image' content={ogImage} />
+    <meta property='og:image:alt' content={description} />
+
+    <!-- Twitter -->
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content={htmlTitle} />
+    <meta name='twitter:url' content={`${siteUrl}${slug}`} />
+    <meta name='twitter:description' content={description} />
+    <meta name='twitter:image' content={ogImage} />
+    <meta name='twitter:image:alt' content={description} />
+
+    <!-- Favicons -->
+    <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+    <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' data-react-helmet='true' />
+
+    <!-- Custom CSS -->
+    <link href='/prism-dracula.css' rel='stylesheet' />
+
+      <!-- Google tag (gtag.js) -->
+      {
+        isProduction ? (
+          <script type="text/partytown" async src='https://www.googletagmanager.com/gtag/js?id=G-K1DEFTPEC4'></script>
+          <script type="text/partytown">
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+  
+          gtag('config', 'G-K1DEFTPEC4');
+          </script>
+        ) : null
+      }
+      
+      <!-- Edge Analytics -->
+      {
+        isProduction ? (
+        <script is:inline define:vars={{ title }}>
+          setTimeout(function () {
+            navigator.sendBeacon(
+              '/api/page-view',
+              JSON.stringify({ title: title, slug: window.location.pathname, referrer: document.referrer })
+            );
+          }, 10000);
+        </script>
+        ) : null
+      }
+  </head>
+  <body class='prose max-w-none bg-brand-background'>
+    <Layout fullWidth={fullWidth} slug={slug} search={search}>
+      <slot />
+    </Layout>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+---
+const { href, className = 'my-24' } = Astro.props;
+---
+
+<div class={`flex items-center justify-center ${className}`}>
+  <a
+    href={href}
+    target='_blank'
+    rel='noopener'
+    class='not-prose font-[system-ui] inline-flex border-2 border-brand-salmon rounded-full bg-transparent text-brand-salmon font-bold text-base no-underline px-6 py-3 transition-color duration-300 hover:text-brand-text hover:border-brand-text'
+  >
+    <slot />
+  </a>
+</div>

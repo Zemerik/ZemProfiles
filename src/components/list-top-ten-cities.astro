@@ -1,0 +1,23 @@
+---
+const { data } = Astro.props;
+
+const listData = data.sort((a, b) => b.total - a.total).slice(0, 10);
+---
+
+<ul class='m-0 p-0 border rounded border-brand-outline bg-brand-surface px-4 pt-2' '>
+  {
+    listData.map((item) => {
+      const { flag, city, total } = item;
+
+      return (
+        <li class='m-0 p-0 flex items-center gap-4 border-b border-b-transparent [&:not(:last-child)]:border-b-brand-outline leading-[2.5rem]'>
+          <div class='flex grow items-center gap-2'>
+            <span class='mt-1'>{flag}</span>
+            <span>{city}</span>
+          </div>
+          <strong>{`x${total}`}</strong>
+        </li>
+      );
+    })
+  }
+</ul>

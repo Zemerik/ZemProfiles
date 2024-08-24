@@ -1,0 +1,26 @@
+---
+import AstroImage from '../components/astro-image.astro';
+
+const { alt, thumbnail, text } = Astro.props;
+---
+
+<div class='grid gap-4 rounded border border-brand-outline bg-brand-surface/50 px-4 sm:px-6 py-6'>
+  <div class='rounded shadow-lg overflow-hidden w-full'>
+    <AstroImage width={396} height={222} alt={alt} url={thumbnail} className='!my-0 w-full' />
+  </div>
+  <a
+    href={`https://twitter.com/intent/tweet?text=${text}`}
+    target='_blank'
+    rel='noopener'
+    class='not-prose flex items-center justify-center gap-4 no-underline text-brand-secondary text-sm text-center py-2 px-4 transition-all duration-300 rounded border border-brand-outline bg-brand-surface hover:text-brand-text hover:bg-brand-muted/10'
+  >
+    <svg xmlns='http://www.w3.org/2000/svg' class='h-4 w-4' fill='currentColor' viewBox='0 0 24 24'
+      ><path
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'
+      ></path></svg
+    >
+     Share on X
+  </a>
+</div>

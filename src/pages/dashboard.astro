@@ -1,0 +1,119 @@
+---
+export const prerender = false;
+
+import Main from '../layouts/main.astro';
+
+import Aside from '../components/aside.astro';
+import ProfileCard from '../components/profile-card.astro';
+import ListPopular from '../components/list-popular.astro';
+import DonutChartTags from '../components/donut-chart-tags.astro';
+import PoweredByMdx from '../components/powered-by-mdx.astro';
+import HappyAllCities from '../components/happy-all-cities';
+
+let analyticsData = null;
+let reactionsData = null;
+const period = 30;
+
+---
+
+<Main title='Dashboard' description='Statistics and analytics about my work' slug='/dashboard/'>
+  <strong class='text-sm text-brand-primary'>Dashboard</strong>
+  <h1 class='mb-0'>Built-in Analytics</h1>
+  <p class='mb-16'>
+    The data visualizations on this page have been created using data from local MDX files and a custom web analytics
+    solution powered by Vercel Edge Functions and a Neon Serverless Postgres database. The recent GitHub activity list
+    has been created by using the GitHub REST API.
+  </p>
+  <div class='flex flex-col gap-24 min-w-full'>
+    {
+      analyticsData && reactionsData ? (
+        <>
+          <section>
+            <h2 class='m-0 uppercase'>Totals by Year and Month</h2>
+            <p class='mt-0 mb-4 text-slate-300'>All content</p>
+          </section>
+
+          <section>
+            <h2 class='m-0 uppercase'>Totals by Year and Day</h2>
+            <p class='mt-0 mb-4 text-slate-300'>All content</p>
+          </section>
+
+          <div class='grid sm:gap-x-8 sm:grid-cols-2'>
+            <section class='flex flex-col'>
+              <h2 class='m-0 uppercase'>Totals by reaction</h2>
+              <p class='mt-0 mb-4 text-slate-300'>Recent reactions</p>
+            </section>
+            <section>
+              <h2 class='m-0 uppercase'>Totals by Tag</h2>
+              <p class='mt-0 mb-4 text-slate-300'>Recent tags</p>
+              <DonutChartTags
+              />
+            </section>
+            <PoweredByMdx period={period} className='sm:order-4' />
+          </div>
+
+          <section>
+            <h2 class='m-0 uppercase'>Totals by publisher</h2>
+            <p class='mt-0 mb-4 text-slate-300'>All publishers</p>
+          </section>
+
+          <section>
+            <h2 class='m-0 uppercase'>Totals by site visits</h2>
+            <p class='mt-0 mb-4 text-slate-300'>Recent site visits</p>
+          </section>
+
+          <section>
+            <h2 class='m-0 uppercase'>Totals by referrer</h2>
+            <p class='mt-0 mb-4 text-slate-300'>Top Ten referrers</p>
+          </section>
+
+          <div class='flex flex-col md:flex-row gap-24 md:gap-8 overflow-hidden'>
+            <section class='w-full lg:w-1/2'>
+              <div class='flex flex-col'>
+                <h2 class='m-0 uppercase'>Totals by city</h2>
+                <p class='mt-0 mb-4 text-slate-300'>Recent city visits</p>
+              </div>
+            </section>
+            <section class='w-full lg:w-1/2'>
+              <h2 class='m-0 uppercase'>Location visualization</h2>
+              <p class='mt-0 mb-4 text-slate-300'>Recent geolocation visits</p>
+              <div class='relative rounded border border-brand-outline bg-brand-surface/40 cursor-move'>
+                <div class='flex justify-center overflow-hidden'>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <section>
+            <h2 class='m-0 uppercase'>Happiest Cities</h2>
+            <p class='mt-0 mb-4 text-slate-300'>Top ten happiest cities</p>
+            <HappyAllCities period={period} />
+          </section>
+
+          <section>
+            <h2 class='m-0 uppercase'>Popular Posts</h2>
+            <p class='mt-0 mb-4 text-slate-300'>Top Ten Post views</p>
+            <ListPopular
+            />
+          </section>
+
+          <section>
+            <h2 class='m-0 uppercase'>Popular Articles</h2>
+            <p class='mt-0 mb-4 text-slate-300'>Top Ten Article views</p>
+            <ListPopular
+            />
+          </section>
+        </>
+      ) : null
+    }
+
+    <section>
+      <h2 class='m-0 uppercase'>GtiHub Activity</h2>
+      <p class='mt-0 mb-4 text-slate-300'>Recent GitHub events</p>
+    </section>
+
+    <Aside>
+      <ProfileCard />
+    </Aside>
+  </div>
+</Main>

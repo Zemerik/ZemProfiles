@@ -1,0 +1,207 @@
+---
+const { data } = Astro.props;
+import colors from '../utils/colors';
+import months from '../utils/months';
+import years from '../utils/years';
+
+const totalByYearAndMonth = Object.keys(data).reduce((acc, year) => {
+  const groupedByYear = data[year];
+  Object.keys(groupedByYear).forEach((month) => {
+    const monthCount = groupedByYear[month].length;
+
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+
+    acc[year].push({
+      month: month,
+      total: monthCount,
+    });
+  });
+
+  // Add months with 0 count
+  months.forEach((month) => {
+    if (!acc[year].some((item) => item.month === month)) {
+      acc[year].push({
+        month: month,
+        total: 0,
+      });
+    }
+  });
+  return acc;
+}, {});
+
+const chartWidth = 600;
+const chartHeight = 300;
+const offsetY = 40;
+const paddingX = 50;
+const paddingY = 50;
+
+const maxY = Math.max(
+  ...Object.values(totalByYearAndMonth).flatMap((yearData: any) => yearData.map((month) => month.total))
+);
+const guides = [...Array(8).keys()];
+
+const properties = Object.values(totalByYearAndMonth).map((property: any) => {
+  return {
+    total: property.reduce((items, item) => items + item.total, 0),
+    data: property
+      .sort((a, b) => months.indexOf(a.month) - months.indexOf(b.month))
+      .map((entry, index) => {
+        const { total } = entry;
+
+        const x = (index / months.length) * chartWidth + paddingX / 2;
+        const y = chartHeight - offsetY - (total / maxY) * (chartHeight - (paddingY + offsetY)) - paddingY + offsetY;
+
+        return {
+          total: total,
+          x: x,
+          y: y,
+        };
+      }),
+  };
+});
+
+const points = properties.map((point): any => {
+  return point.data.map((p) => {
+    const { x, y } = p;
+    return `${x},${y}`;
+  });
+});
+
+const ticks = months.map((month, index) => {
+  const x = (index / months.length) * chartWidth + paddingX / 2;
+  return {
+    month: month,
+    x: x,
+  };
+});
+---
+
+<script>
+  const handleChart = (event) => {
+    const {
+      target,
+      target: { id },
+    } = event;
+
+    const visuals = document.querySelectorAll(`.years-visuals-${id}`);
+
+    visuals.forEach((visual: HTMLElement) => {
+      const opacity = window.getComputedStyle(visual).opacity;
+      if (opacity === '1') {
+        visual.style.opacity = '0';
+        target.style.opacity = '0.5';
+      } else {
+        visual.style.opacity = '1';
+        target.style.opacity = '1';
+      }
+    });
+  };
+
+  const btns = document.querySelectorAll(`.years-btn`);
+  btns.forEach((btn: HTMLElement) => {
+    btn.addEventListener('click', (event) => handleChart(event));
+  });
+</script>
+
+<div class='border rounded border-brand-outline bg-brand-surface p-2 pb-4'>
+  <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} role='presentation'>
+    {
+      guides.map((_, index) => {
+        const ratio = index / guides.length;
+        const y = chartHeight - offsetY - chartHeight * ratio;
+
+        return (
+          <polyline
+            class='stroke-brand-guide'
+            fill='none'
+            stroke-width={0.6}
+            points={`${paddingX / 2},${y} ${chartWidth - paddingX / 2},${y}`}
+          />
+        );
+      })
+    }
+    {
+      points.map((point, index) => {
+        return (
+          <polyline
+            fill='none'
+            class={`years-visuals-${years[index]} stroke-brand-${colors[index]}`}
+            stroke-width={1}
+            points={point}
+          />
+        );
+      })
+    }
+    {
+      properties.map((property, index) => {
+        return property.data.map((p) => {
+          const { total, x, y } = p;
+
+          return (
+            <g>
+              <circle
+                class={`years-visuals-${years[index]} stroke-brand-${colors[index]} fill-brand-surface`}
+                cx={x}
+                cy={y}
+                r={3}
+                stroke-width={1}
+              />
+              {total > 0 ? (
+                <text
+                  x={x}
+                  y={y - 8}
+                  text-anchor='middle'
+                  font-size={10}
+                  class={`years-visuals-${years[index]} fill-brand-text font-semibold select-none`}
+                >
+                  {`x${total}`}
+                </text>
+              ) : null}
+            </g>
+          );
+        });
+      })
+    }
+    {
+      ticks.map((tick) => {
+        const { month, x } = tick;
+
+        return (
+          <text
+            x={x}
+            y={chartHeight - (paddingY - offsetY)}
+            text-anchor='middle'
+            font-size={10}
+            class='fill-brand-muted font-semibold uppercase select-none'
+          >
+            {month}
+          </text>
+        );
+      })
+    }
+  </svg>
+</div>
+<ul class='flex gap-2 list-none m-0 px-0 pt-4 text-sm'>
+  {
+    years.map((year: string, index: number) => {
+      return (
+        <li class='relative m-0 p-0'>
+          <button
+            id={year}
+            class={`years-btn years-btn-${year} text-brand-${colors[index]} px-2 py-1 bg-brand-surface rounded border border-brand-outline transition-colors duration-300 hover:bg-brand-text/10 font-normal text-[0.75rem]`}
+          >
+            {year}
+          </button>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<!-- <span
+class={`not-prose absolute -top-3 -right-3 rounded-full w-6 h-6 flex items-center justify-center border border-brand-outline bg-brand-surface text-brand-${colors[index]} text-[0.65rem] z-10`}
+>
+{`x${properties[index].total}`}
+</span> -->

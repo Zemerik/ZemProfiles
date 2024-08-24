@@ -1,0 +1,29 @@
+---
+const { data } = Astro.props;
+
+const listData = data.sort((a, b) => b.total - a.total).slice(0, 10);
+---
+
+<ul class='m-0 p-0 border rounded border-brand-outline bg-brand-surface px-4 py-2'>
+  {
+    listData.map((item, index) => {
+      const { referrer, total } = item;
+
+      return (
+        <li class='m-0 p-0 flex items-center gap-4 border-b border-b-transparent [&:not(:last-child)]:border-b-brand-outline leading-[3rem]'>
+          <small class='flex shrink-0 items-center justify-center w-6 h-6 rounded-full font-bold leading-4 text-brand-salmon border-2 border-brand-salmon'>
+            {index + 1}
+          </small>
+
+          <div class='truncate text-brand-secondary'>
+            <a href={referrer} target='_blank' rel='noopener' class='text-sm'>
+              {referrer}
+            </a>
+          </div>
+
+          <strong class='flex justify-end grow'>{`x${total}`}</strong>
+        </li>
+      );
+    })
+  }
+</ul>

@@ -1,0 +1,34 @@
+---
+export const prerender = true;
+
+import Main from '../layouts/main.astro';
+
+import Aside from '../components/aside.astro';
+import ProfileCard from '../components/profile-card.astro';
+import CollectionsList from '../components/collections-list.astro';
+import CtaInternal from '../components/cta-internal.astro';
+
+import { profiles } from '../utils/all-collections';
+---
+
+<Main title='Home' description="ZemProfiles" slug='/'>
+  <strong class='text-sm text-brand-primary'>DISCOVER & CONNECT WITH DEVELOPERS</strong>
+  <h1 class='text-brand-text text-3xl sm:text-5xl mb-1'>ZemProfiles</h1>
+  <p>
+    ZemProfiles stands as an open-source platform, providing users with the opportunity to connect seamlessly with fellow developers. 
+    This connectivity is fostered through the simple act of adding one's Profile to the platform, 
+    thus creating a digital hub where like-minded individuals can engage, collaborate, and 
+    share insights within the expansive realm of software development. With its user-friendly interface and inclusive community ethos, 
+    ZemProfiles serves as a dynamic space where connections are forged, ideas are exchanged, and innovation thrives.
+  </p>
+
+
+  <h2 class='mb-0 text-brand-salmon'>Latest Profiles</h2>
+  <p>Latest profiles published on ZemProfiles 👇</p>
+  <CollectionsList collections={profiles} slice={3} />
+  <CtaInternal href='/profiles/'>{`See All ${profiles.length} Profiles`}</CtaInternal>
+
+  <Aside>
+    <ProfileCard />
+  </Aside>
+</Main>

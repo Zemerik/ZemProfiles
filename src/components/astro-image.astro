@@ -1,0 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import { resizeImage } from '../services/resize-image';
+
+const { width, height, alt, url, className = 'w-full' } = Astro.props;
+---
+
+<Image
+  width={width}
+  height={height}
+  alt={alt}
+  src={resizeImage(url, width, height)}
+  class={`my-10 overflow-hidden rounded border border-brand-outline ${className}`}
+/>

@@ -1,0 +1,29 @@
+---
+import { formatSlug } from '../utils/format-slug';
+
+const { tags, className = 'mb-8', highlighted, link = false } = Astro.props;
+---
+
+<ul class={`flex flex-wrap items-baseline gap-2 list-none m-0 p-0 ${className}`}>
+  {
+    tags.map((tag) => {
+      const isHighlighted = formatSlug(tag) === highlighted ? true : false;
+      return (
+        <li
+          class={`m-0 p-0 rounded ${isHighlighted ? 'text-sm text-brand-yellow border-brand-yellow/40' : 'text-xs text-brand-salmon border-brand-outline'} border border-brand-outline bg-brand-surface`}
+        >
+          {link ? (
+            <a
+              href={`/tags/${formatSlug(tag)}/`}
+              class='block no-underline px-2 py-1 text-inherit font-medium duration-300 transition-colors'
+            >
+              {tag}
+            </a>
+          ) : (
+            <strong class='block px-2 py-1 text-inherit font-medium'>{tag}</strong>
+          )}
+        </li>
+      );
+    })
+  }
+</ul>

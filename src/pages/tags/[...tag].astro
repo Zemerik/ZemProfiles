@@ -1,0 +1,58 @@
+---
+export const prerender = true;
+
+import Main from '../../layouts/main.astro';
+import Aside from '../../components/aside.astro';
+import ProfileCard from '../../components/profile-card.astro';
+import CollectionsList from '../../components/collections-list.astro';
+
+import { collections } from '../../utils/all-collections';
+import { createTagsCollection } from '../../utils/create-tags-collection';
+
+interface Props {
+  name: string;
+  collection: { data: { tags: string[] } }[];
+}
+
+export async function getStaticPaths() {
+  const tags = createTagsCollection(collections);
+
+  return tags.map((tag: { name: string; slug: string }) => {
+    const { name, slug } = tag;
+
+    return {
+      params: {
+        tag: slug,
+      },
+      props: {
+        name: name,
+        collection: collections.filter((item) => item.data.tags.includes(name)),
+      },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const site = Astro.site.href;
+
+const { name, collection } = Astro.props;
+
+const ogImage = `${site}/tags/${tag}/og.png`;
+---
+
+<Main title={name} slug={`/tags/${tag}/`} image={ogImage}>
+  <strong class='flex items-center justify-between gap-2 text-sm text-brand-primary'
+    >{name}
+    <span class='text-inherit text-xs border border-brand-outline bg-surface px-2 py-1'>{`x${collection.length}`}</span>
+  </strong>
+  <h1 class='mb-0'>{`${name} Developers`}</h1>
+  <p>
+    Here you'll find <strong class='text-brand-primary'>{collection.length}</strong>
+    <span>{collection.length > 1 ? 'developers' : 'developer'}</span> who {collection.length > 1 ? 'are' : 'is'} familiar with
+    <strong class='text-brand-yellow'>{name}</strong>.
+  </p>
+  <CollectionsList collections={collection} highlighted={tag} />
+  <Aside>
+    <ProfileCard />
+  </Aside>
+</Main>

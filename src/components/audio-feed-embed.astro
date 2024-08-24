@@ -1,0 +1,57 @@
+---
+const { audioFeedId } = Astro.props;
+import Loading from './loading';
+---
+
+<div
+  id='audiofeed-embed'
+  class='min-h-[90px] w-full sticky top-[73px] drop-shadow-2xl z-10 overflow-hidden rounded bg-white'
+>
+  <Loading classNames='text-brand-text absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2' />
+</div>
+
+<script define:vars={{ audioFeedId }}>
+  var episodeUrl = `https://audiofeed.ai/embed/${audioFeedId}?theme=light`;
+  var iframeWidth = '100%';
+  var iframeHeight = '90';
+  var backgroundColor = 'black';
+  window.onload = function () {
+    function check(url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('HEAD', url, true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            callback(true);
+          } else {
+            callback(false);
+          }
+        }
+      };
+      xhr.send();
+    }
+    function insert(url) {
+      var iframe = document.createElement('iframe');
+      iframe.src = url;
+      iframe.frameBorder = 0;
+      iframe.scrolling = 'no';
+      iframe.seamless = true;
+      iframe.width = iframeWidth;
+      iframe.height = iframeHeight;
+      iframe.style.width = iframeWidth;
+      iframe.style.height = iframeHeight;
+      iframe.style.backgroundColor = 'transparent';
+      iframe.setAttribute('allow-same-origin', '');
+      var targetDiv = document.getElementById('audiofeed-embed');
+      if (targetDiv) {
+        document.getElementById('loading').style.display = 'none';
+        targetDiv.appendChild(iframe);
+      }
+    }
+    check(episodeUrl, function (isAvailable) {
+      if (isAvailable) {
+        insert(episodeUrl);
+      }
+    });
+  };
+</script>

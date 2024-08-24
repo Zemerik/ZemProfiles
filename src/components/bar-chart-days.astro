@@ -1,0 +1,218 @@
+---
+const { data } = Astro.props;
+import colors from '../utils/colors';
+import days from '../utils/days';
+import years from '../utils/years';
+
+const totalByDayAndYear = Object.keys(data).reduce((acc, day) => {
+  const groupedByDay = data[day];
+
+  Object.keys(groupedByDay).forEach((year) => {
+    const yearCount = groupedByDay[year].length;
+
+    if (!acc[day]) {
+      acc[day] = [];
+    }
+
+    acc[day].push({
+      day: day,
+      year: year,
+      total: yearCount,
+    });
+  });
+
+  // Add years with 0 count
+  years.forEach((year) => {
+    if (!acc[day].some((item) => item.year === year)) {
+      acc[day].push({
+        day: day,
+        year: year,
+        total: 0,
+      });
+    }
+  });
+
+  acc[day].sort((a, b) => a.year - b.year);
+
+  return acc;
+}, {});
+
+const dayOrder = [...days.slice(1), 'Sun'];
+
+const totalByDayAndYearOrdered = dayOrder.reduce((result, day) => {
+  result[day] = totalByDayAndYear[day];
+  return result;
+}, {});
+
+const chartWidth = 600;
+const chartHeight = 300;
+const barWidth = 10;
+const barGap = 3;
+const offsetY = 40;
+const paddingX = 30;
+const paddingY = 50;
+const maxY = Math.max(
+  ...Object.values(totalByDayAndYearOrdered).flatMap((yearData: any) => yearData.map((year) => year.total))
+);
+
+const guides = [...Array(8).keys()];
+
+const properties = Object.values(totalByDayAndYearOrdered).map((property: any, index: number) => {
+  const x = (index / days.length) * chartWidth + paddingX / 2;
+  const day = property[0].day;
+
+  const data = property
+    .sort((a, b) => years.indexOf(a.year) - years.indexOf(b.year))
+    .map((entry, i) => {
+      const { day, total } = entry;
+      const height =
+        chartHeight - offsetY - (total / maxY) * (chartHeight - (paddingY + offsetY)) - paddingY + offsetY * 2;
+      const y = chartHeight - offsetY;
+      return {
+        day: day,
+        year: years[i],
+        total: total,
+        height: total > 0 ? chartHeight - height : 1,
+        x: x + (barWidth + barGap) * i,
+        y: y,
+      };
+    });
+
+  return {
+    day: day,
+    x: x,
+    data: data,
+  };
+});
+
+const ticks = dayOrder.map((day, index) => {
+  const x = (index / days.length) * chartWidth + paddingX / 2;
+  return {
+    day: day,
+    x: x,
+  };
+});
+---
+
+<script>
+  const handleChart = (event) => {
+    const {
+      target,
+      target: { id },
+    } = event;
+
+    const visuals = document.querySelectorAll(`.days-visuals-${id}`);
+
+    visuals.forEach((visual: HTMLElement) => {
+      const opacity = window.getComputedStyle(visual).opacity;
+
+      if (opacity === '1') {
+        visual.style.opacity = '0';
+        target.style.opacity = '0.5';
+      } else {
+        visual.style.opacity = '1';
+        target.style.opacity = '1';
+      }
+    });
+  };
+
+  const btns = document.querySelectorAll(`.days-btn`);
+  btns.forEach((btn: HTMLElement) => {
+    btn.addEventListener('click', (event) => handleChart(event));
+  });
+</script>
+
+<div class='border rounded border-brand-outline bg-brand-surface p-2 pb-4'>
+  <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} role='presentation'>
+    {
+      guides.map((_, index) => {
+        const ratio = index / guides.length;
+        const y = chartHeight - offsetY - chartHeight * ratio;
+
+        return (
+          <polyline
+            class='stroke-brand-guide'
+            fill='none'
+            stroke-width={0.6}
+            points={`${paddingX / 2},${y} ${chartWidth - paddingX / 2},${y}`}
+          />
+        );
+      })
+    }
+
+    {
+      properties.map((property) => {
+        const { x, data } = property;
+
+        return (
+          <g>
+            {data.map((d, index) => {
+              const { x, y, height, total, day } = d;
+              const _y = y - height;
+
+              return (
+                <g>
+                  <rect
+                    data-day={day}
+                    x={x}
+                    y={_y}
+                    width={barWidth}
+                    height={height}
+                    fill='transparent'
+                    class={`days-visuals-${years[index]} stroke-brand-${colors[index]} fill-brand-surface`}
+                    stroke-width={1.2}
+                  />
+                  {total > 0 ? (
+                    <text
+                      x={x + barWidth / 2}
+                      y={_y - 8}
+                      text-anchor='middle'
+                      font-size={10}
+                      class={`days-visuals-${years[index]} fill-brand-text font-semibold select-none`}
+                    >
+                      {`x${total}`}
+                    </text>
+                  ) : null}
+                </g>
+              );
+            })}
+          </g>
+        );
+      })
+    }
+
+    {
+      ticks.map((tick) => {
+        const { day, x } = tick;
+
+        return (
+          <text
+            x={x + barWidth * (days.length / 2) + 4}
+            y={chartHeight - (paddingY - offsetY)}
+            text-anchor='middle'
+            font-size={10}
+            class='fill-brand-muted font-semibold uppercase select-none'
+          >
+            {day}
+          </text>
+        );
+      })
+    }
+  </svg>
+</div>
+<ul class='flex gap-2 list-none m-0 px-0 pt-4 text-sm'>
+  {
+    years.map((year: string, index: number) => {
+      return (
+        <li class='m-0 p-0'>
+          <button
+            id={year}
+            class={`days-btn days-btn-${year} text-brand-${colors[index]} px-2 py-1 bg-brand-surface rounded border border-brand-outline transition-colors duration-300 hover:bg-brand-text/10 font-normal text-xs`}
+          >
+            {year}
+          </button>
+        </li>
+      );
+    })
+  }
+</ul>

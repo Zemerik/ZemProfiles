@@ -1,3 +1,4 @@
+
 <p align = "center">
 
 <img src = "public/favicon.png" style = "height:250px;width:250px">
@@ -6,7 +7,7 @@
 
 <br>
 
-<img src = "https://skillicons.dev/icons?i=javascript,css,html,react,nodejs,vscode,vercel,github&perline=25">
+<img src = "https://skillicons.dev/icons?i=astro,typescript,javascript,react,tailwind,css,markdown,nodejs,vscode,vercel,github&perline=25">
 
 </p>
 
@@ -19,74 +20,95 @@
 </p>
 
 <p align = "center">
-  <img src = "public/Screenshot.png">
+  <img src = "public/screenshot.png">
 </p>
 
 ## ❗About:
 
 ZemProfiles stands as an open-source platform, providing users with the opportunity to connect seamlessly with fellow developers. This connectivity is fostered through the simple act of adding one's Profile to the platform, thus creating a digital hub where like-minded individuals can engage, collaborate, and share insights within the expansive realm of software development. With its user-friendly interface and inclusive community ethos, ZemProfiles serves as a dynamic space where connections are forged, ideas are exchanged, and innovation thrives.
 
+- > Read out Official Docs on [ZemDocs](https://zemdocs.vercel.app/en/zemprofiles/introduction)
+
 ## ⭐ Features:
 
-<table align = "center">
-  <tr>
-    <td>
-      <img src = "public/horizontal_screenshot.png" style = "height: 400px; width: 250px">
-    </td>
-    <td>
-      <p align = "center">
-        👀 Dark & Light Theme
-      </p>
-      <br>
-      <p align = "center">
-        📱 Responsive UI Design supported on all devices
-      </p>
-      <br>
-      <p align = "center">
-        📃 List of all Developers
-      </p>
-      <br>
-      <p align = "center">
-        🔍 Search Bar
-      </p>
-      <br>
-      <p align = "center">
-        🏆 Open Source
-      </p>
-    </td>
-    <td>
+- User Friendly UI/UX
+- Customizable Profile Post
+- Use markdown or html for styling
+- Search for Developers using Tags
+- List of all Developers
+- Profile Card for Maintainers
 
-  <img src = "public/vertical_screenshot.png" style = "height: 400px; width: 250px">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p align = "right">
-       ▶️ Want to Add More
-      </p>
-    </td>
-    <td>
-      <p align = "center">
-       🚥 Features? Open an <a href = "https://github.com/Zemerik/Zemprofiles/issues">Issue</a> 🚥
-      </p>
-    </td>
-    <td>
-      <p align = "left">
-        and Let us Know! ◀️
-      </p> 
-    </td>
-  </tr>
-</table>
+Want to see any other features? Open an [issue](https://github.com/Zemerik/ZemProfiles/issues) and let us know!
+
+## 💬 Fonts:
+
+- [x] Inconsolata-Black
+- [x] Inconsolata-Black
+- [x] Roboto-Regular.ttf
+
+## 🏃‍♂️ Locally Running:
+
+- This project can be locally executed on your machine in 4 simple steps!
+
+> [!Tip]
+> [NodeJS](https://nodejs.org/) needs to be installed on your machine. 
+
+
+1. Make a `Copy` of this Repository on your machine by using the following `git command` in your terminal:
+
+```
+git clone https://github.com/Zemerik/ZemProfiles
+```
+
+2. `Navigate` into the Project's `directory` by entering the following `command` in your terminal:
+
+```
+cd ZemProfiles
+```
+
+3. `Install` the required `Dependencies` by using `NPM`:
+
+```nodejs
+npm i
+```
+
+4. Start the `Development Server` through the following `command`:
+
+```nodejs
+npm run dev
+```
+
+## 🚀 Project Structure
+
+```text
+├── public/
+│   ├── fonts/
+│   └── images/
+├── src/
+│   ├── components/
+│   ├── content/
+│   ├── layouts/
+│   └── pages/
+│   └── services/
+│   └── util/
+├── .gitignore
+├── astro.config.mjs
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENCE
+├── package-lock.json
+├── package.json
+├── README.md
+├── SECURITY.md
+├── tailwind.config.cjs
+├── yarn.lock
+└── tsconfig.json
+```
 
 ## 🤝 Contributing:
 
-Contributions are always welcome and appreciated! **Kindly visit the [CONTRIBUTING.md](https://github.com/Zemerik/ZemProfiles/blob/main/CONTRIBUTING.md) file or the video below for more information**
+Contributions are always welcome and appreciated! **Kindly visit the [CONTRIBUTING.md](https://github.com/Zemerik/ZemProfiles/blob/main/CONTRIBUTING.md) file for more information**
     
-<p align = "center">
-
-<a href = "https://www.youtube.com/watch?v=Qtm55EaAFPc">
-  <img src = "https://ytcards.demolab.com/?id=Qtm55EaAFPc&title=How+to+contribute+to+ZemProfiles%3F&lang=en&timestamp=1717596771&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5&duration=159 "How to contribute to ZemProfiles?" style = "height: 250px;width: 350px">
-</a>
 
 ## 💁 Support:
 

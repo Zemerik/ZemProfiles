@@ -6,7 +6,7 @@
 
 <br>
 
-<img src = "https://skillicons.dev/icons?i=javascript,css,html,react,nodejs,vscode,vercel,github&perline=25">
+<img src = "https://skillicons.dev/icons?i=astro,typescript,javascript,react,tailwind,css,markdown,nodejs,vscode,vercel,github&perline=25">
 
 </p>
 
@@ -19,7 +19,7 @@
 </p>
 
 <p align = "center">
-  <img src = "public/Screenshot.png">
+  <img src = "public/screenshot.png">
 </p>
 
 ## ➕ Adding your Profile:
@@ -28,48 +28,84 @@
 
 - [Fork](https://github.com/Zemerik/ZemProfiles/fork)
 
-2. Head over to your **Forked** Repository, and locate the `public/data` directory. Create a new file, and name it `[Your Github Username].json`. 
+2. Clone your Forked Repository by using the following `GIT` command:
 
-> [!Note]
-> Remember to replace `[Your Github Username]` with your actual Github Username. 
-
-3. Add the following code snippet in the file,
-
-> [!Warning]
-> This is the content of your actual profile, so ensure that it has no typo's, faulty links, etc
-
-```json
-{
-  "name": "NAME HERE",
-  "location": "CITY, COUNTRY",
-  "bio": "SHOULD BE AROUND 20 - 30 WORDS IN LENGTH",
-  "avatar": "https://github.com/[YOUR GITHUB USERNAME].png",
-  "portfolio": "LINK TO YOUR PORTFOLIO OR OTHER WEBSITE",
-  "skills": ["SKILL 1", "SKILL 2", "SKILL 3", "..."],
-  "social": {
-    "GitHub": "YOUR GITHUB PROFILE LINK",
-    "Twitter": "YOUR X (TWITTER) PROFILE LINK",
-    "LinkedIn": "YOUR LINKEDIN PROFIFLE LINK"
-  }
-}
+```bash
+git clone https://github.com/[YOUR GITHUB USERNAME]/ZemProfiles.git
 ```
 
->[!Note]
-> You are free to use any picture other than your github username, as long as it is `png`/`jpg`/`jpeg`. You may require to **upload** your picture in either the `public/data` directory or create a **New Folder** in that directory. 
+3. Navigate into the Project's `Directory` by using the command below:
 
-> [!Caution]
-> Your Bio must not be more than **30** Words. 
+```bash
+cd ZemProfiles
+```
+
+4. Initialize a Remote to the original Repository by the following `GIT` command:
+
+```bash
+git remote add upstream https://github.com/Zemerik/ZemProfiles
+```
+
+5. Create a new `branch` in which you can make your desired changes:
+
+```bash
+git checkout -b newprofile
+```
+
+6. Create a new file in the `src/content/` directory and name it `[YOUR GITHUB USERNAME].mdx`
+
+![Directory Screenshot](public/profile_directory.png)
+
+7. After Creating the file, paste the code snippet below and enter **Your** Details:
+
+```md
+---
+base: posts
+title: Your Name
+tags: [Skill 1, Skill 2, Skill 3, ...]
+date: Today's Date
+author: Name / Github Username
+featuredImage: Image address of your Profile Picture
+---
+
+Add a short description of yourself here
+
+
+Customize your Profile Post as you like using Markdown or HTML here.
+
+```
 
 > [!Tip]
-> If you do not have a Portfolio currently or one of the social accounts, you can give a link to other website. 
+> You can refer to `zemerik.mdx` file for help or inspiration if required. 
 
-4. After **saving** the file, head over to the `ProfilesList.json` file in the `src` directory and edit the file with the code,
+![Example Profile](public/zemerik_profile.png)
 
-```json
-["zemerik.json", "{Name of the File which you created earlier}"]
+8. After you are happy with your Profile Post, add all your files to the Staging Area: 
+
+```bash
+git add --all
 ```
 
-5. Save the file in which you have listed your profile, and open a pull-request on this repository. Your PR will be **merged**/**reviewed** as soon as possible!
+9. Commit your Changes:
+
+```bash
+git commit -m "Profile Addition: [Your Name]"
+```
+
+> [!Note]
+> Remember to have a good commit message!
+
+10. Push all your Changes:
+
+```bash
+git push origin newprofile
+```
+
+11. Create a new Pull - Request on the Original Repository
+
+> Your Pull Request will be merged / reviewed as soon as possible
+
+- > Don't Forget to Check out [ZemShowcase](https://github.com/Zemerik/ZemShowcase) & [ZemPosts](https://github.com/Zemerik/ZemPosts)
 
 ## 🐞Bug/Issue/Feedback/Feature Request:
 

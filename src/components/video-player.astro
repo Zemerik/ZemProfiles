@@ -1,0 +1,8 @@
+---
+const { src } = Astro.props;
+---
+
+<video controls class='w-full h-auto my-10 overflow-hidden rounded bg-black'>
+  <source src={src} type='video/mp4' />
+  This browser does not display the video tag.
+</video>

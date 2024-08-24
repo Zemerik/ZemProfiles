@@ -1,0 +1,60 @@
+---
+export const prerender = true;
+
+import Main from '../../layouts/main.astro';
+import Aside from '../../components/aside.astro';
+import TagsList from '../../components/tags-list.astro';
+import FeaturedImageCard from '../../components/featured-image-card.astro';
+import TableOfContents from '../../components/table-of-contents.astro';
+
+import { formatDate } from '../../utils/format-date';
+import { createExcerpt } from '../../utils/create-excerpt';
+
+import { profiles } from '../../utils/all-collections';
+
+export async function getStaticPaths() {
+  return profiles.map((post) => {
+    return {
+      params: {
+        slug: post.slug,
+      },
+      props: {
+        post,
+      },
+    };
+  });
+}
+
+const {
+  post,
+  post: {
+    slug,
+    data: { title, author, date, tags, featuredImage, draft },
+  },
+} = Astro.props;
+
+const excerpt = `${createExcerpt(post.body).substring(0, 70)}...`;
+
+const { Content, headings } = await post.render();
+---
+
+<Main title={title} description={excerpt} slug={`/profiles/${slug}/`} image={featuredImage}>
+  {
+    draft ? (
+      <p class='bg-brand-yellow rounded text-sm text-brand-background py-1 text-center'>
+        Status: <span class='font-bold text-inherit'>Unpublished</span>
+      </p>
+    ) : null
+  }
+  <div class='flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-between gap-2'>
+    <time class='text-xs font-bold text-brand-primary'>{formatDate(date)}</time>
+    <span class='text-xs font-bold text-brand-primary'>{`By ${author}`}</span>
+  </div>
+  <h1>{title}</h1>
+  <TagsList tags={tags} link={true} />
+  <Content />
+  <Aside>
+    <FeaturedImageCard alt={title} thumbnail={featuredImage} text={`${title}\n https://zemprofiles.vercel.app/profiles/${slug}/`} />
+    <TableOfContents headings={headings} />
+  </Aside>
+</Main>

@@ -1,0 +1,28 @@
+---
+export const prerender = true;
+
+import Main from '../layouts/main.astro';
+import CollectionsList from '../components/collections-list.astro';
+import Aside from '../components/aside.astro';
+import ProfileCard from '../components/profile-card.astro';
+
+
+import { profiles } from '../utils/all-collections';
+
+
+---
+
+<Main title='Profiles' description='Profiles published on ZemProfiles' slug='/profiles/'>
+  <strong class='flex items-center justify-between gap-2 text-sm text-brand-primary'
+    >Profiles
+    <span class='text-inherit text-xs border border-brand-outline bg-surface px-2 py-1'>{`x${profiles.length}`}</span>
+  </strong>
+  <h1 class='mb-0'>Users Profiles</h1>
+  <p>
+    View some users profiles here, and feel free to explore further by reading their profile post. 
+  </p>
+  <CollectionsList collections={profiles} />
+  <Aside>
+    <ProfileCard />
+  </Aside>
+</Main>

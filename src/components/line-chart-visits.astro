@@ -1,0 +1,78 @@
+---
+const { data } = Astro.props;
+
+const chartData = data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+const chartWidth = 600;
+const chartHeight = 300;
+const offsetY = 40;
+const offsetX = 10;
+const paddingX = 40;
+const paddingY = 50;
+
+const maxY = data ? Math.max(...data.map((item) => item.total)) : null;
+const guides = [...Array(8).keys()];
+
+const properties = chartData.map((property, index) => {
+  const { day, month, total } = property;
+  const ratio = (index / chartData.length) * (chartWidth - offsetX * 2);
+  const x = ratio + paddingX / 2;
+  const y = chartHeight - offsetY - (total / maxY) * (chartHeight - (paddingY + offsetY)) - paddingY + offsetY;
+  return {
+    total: total,
+    date: `${month}•${day}`,
+    x: x,
+    y: y,
+  };
+});
+
+const points = properties
+  .map((point) => {
+    const { x, y } = point;
+    return `${x},${y}`;
+  })
+  .toString();
+---
+
+<div class='border rounded border-brand-outline bg-brand-surface p-2 pb-4'>
+  <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} role='presentation'>
+    {
+      guides.map((_, index) => {
+        const ratio = index / guides.length;
+        const y = chartHeight - paddingY - chartHeight * ratio;
+
+        return (
+          <polyline
+            class='stroke-brand-guide'
+            fill='none'
+            stroke-width={1}
+            points={`${paddingX / 2},${y} ${chartWidth - paddingX / 2},${y}`}
+          />
+        );
+      })
+    }
+
+    <polyline fill='none' class='stroke-brand-salmon' stroke-width={1} points={points}></polyline>
+
+    {
+      properties.map((property) => {
+        const { total, date, x, y } = property;
+        return (
+          <g>
+            <circle cx={x} cy={y} r={4} class='stroke-brand-salmon fill-brand-surface' stroke-width={1} />
+            <text x={x} y={y - 8} text-anchor='middle' font-size={10} class='fill-brand-text font-semibold select-none'>
+              {`x${total}`}
+            </text>
+            <text
+              transform={`translate(${x - offsetX} ${chartHeight - (paddingY - offsetY / 2)}) rotate(45)`}
+              font-size={10}
+              class='fill-brand-muted select-none'
+            >
+              {date}
+            </text>
+          </g>
+        );
+      })
+    }
+  </svg>
+</div>

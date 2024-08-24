@@ -1,0 +1,80 @@
+---
+import { Image } from 'astro:assets';
+import AstroImage from './astro-image.astro';
+
+import NewLabel from './new-label';
+import TagsList from './tags-list.astro';
+
+import { formatDate } from '../utils/format-date';
+import { createExcerpt } from '../utils/create-excerpt';
+
+const { collections, slice, highlighted } = Astro.props;
+---
+
+<ul class='list-none my-8 p-0 flex flex-col gap-8'>
+  {
+    collections
+      .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+      .slice(0, slice || collections.length)
+      .filter((item) => item.data.draft !== true)
+      .map((collection) => {
+        const {
+          slug,
+          data: { base, featuredImage, logo, publication, title, date, tags },
+        } = collection;
+
+        const excerpt = collection.body ? createExcerpt(collection.body) : '';
+        const isGhost = base === 'ghosts';
+
+        return (
+          <li
+            class={`m-0 p-0 rounded border border-brand-outline bg-brand-surface transition-all shadow-lg ${isGhost ? 'cursor-not-allowed' : 'hover:shadow-black/30 hover:-translate-y-2 ease-in-out duration-500 cursor-pointer'}`}
+          >
+            <div class='relative overflow-hidden'>
+              <NewLabel date={date} />
+              <a
+                href={`/${base}/${slug}/`}
+                class={`flex flex-col md:flex-row gap-3 md:gap-6 items-center bg-brand-surface border border-brand-outline rounded p-4 no-underline ${isGhost ? 'select-none pointer-events-none' : ''}`}
+              >
+                {featuredImage ? (
+                  <AstroImage
+                    width={570}
+                    height={321}
+                    alt={title}
+                    url={featuredImage}
+                    className='!my-0 w-full md:w-1/2'
+                  />
+                ) : null}
+                <div class='flex flex-col gap-2'>
+                  <span class='flex flex-col sm:flex-row gap-2 sm:items-center'>
+                    {publication ? (
+                      <>
+                        <div class='flex items-center gap-2'>
+                          <Image
+                            width={24}
+                            height={24}
+                            alt={publication}
+                            src={logo}
+                            class={`m-0 ${isGhost ? 'blur-[3px]' : ''}`}
+                          />
+                          <small class={`text-xs text-brand-secondary ${isGhost ? 'blur-[2px]' : ''}`}>
+                            {publication}
+                          </small>
+                        </div>
+                        <span class='hidden sm:inline-block'>&bull;</span>
+                      </>
+                    ) : null}
+
+                    <time class='text-xs font-bold text-brand-primary'>{formatDate(date)}</time>
+                  </span>
+                  <strong class={`block text-brand-text text-xl ${isGhost ? 'blur-[3px]' : ''}`}>{title}</strong>
+                  <p class={`font-light text-sm ${isGhost ? 'blur-[3px]' : ''}`}>{`${excerpt.substring(0, 120)}...`}</p>
+                  <TagsList tags={tags} className='mt-2 mb-0' highlighted={highlighted} />
+                </div>
+              </a>
+            </div>
+          </li>
+        );
+      })
+  }
+</ul>
