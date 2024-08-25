@@ -44,7 +44,7 @@ Want to see any other features? Open an [issue](https://github.com/Zemerik/ZemPr
 
 - [x] Inconsolata-Black
 - [x] Inconsolata-Black
-- [x] Roboto-Regular.ttf
+- [x] Roboto-Regular
 
 ## 🏃‍♂️ Locally Running:
 
