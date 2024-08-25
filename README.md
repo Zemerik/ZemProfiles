@@ -29,6 +29,17 @@ ZemProfiles stands as an open-source platform, providing users with the opportun
 
 - > Read out Official Docs on [ZemDocs](https://zemdocs.vercel.app/en/zemprofiles/introduction)
 
+## 🎥 Youtube Video:
+
+- Feel free to watch our Youtube Video by clicking below 👇
+
+<div align = "center">
+
+[![Introducing: ZemProfiles v2.0.1 || Github Review || Open Source](https://ytcards.demolab.com/?id=5XyGaH9f0wA&title=Introducing%3A+ZemProfiles+v2.0.1+%7C%7C+Github+Review+%7C%7C+Open+Source&lang=en&timestamp=1724561946&background_color=%230d1117&title_color=%23ffffff&stats_color=%23dedede&max_title_lines=1&width=250&border_radius=5&duration=407 "Introducing: ZemProfiles v2.0.1 || Github Review || Open Source")](https://www.youtube.com/watch?v=5XyGaH9f0wA)
+
+</div>
+
+
 ## ⭐ Features:
 
 - User Friendly UI/UX
