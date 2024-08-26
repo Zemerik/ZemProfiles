@@ -52,7 +52,7 @@ git remote add upstream https://github.com/Zemerik/ZemProfiles
 git checkout -b newprofile
 ```
 
-6. Create a new file in the `src/content/` directory and name it `[YOUR GITHUB USERNAME].mdx`
+6. Create a new file in the `src/content/profiles` directory and name it `[YOUR GITHUB USERNAME].mdx`
 
 ![Directory Screenshot](public/profile_directory.png)
 
