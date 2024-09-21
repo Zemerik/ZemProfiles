@@ -178,6 +178,13 @@ declare module 'astro:content' {
   render(): Render[".md"];
 }>;
 "profiles": {
+"Developer-Utkarsh.mdx": {
+	id: "Developer-Utkarsh.mdx";
+  slug: "developer-utkarsh";
+  body: string;
+  collection: "profiles";
+  data: any
+} & { render(): Render[".mdx"] };
 "axorax.mdx": {
 	id: "axorax.mdx";
   slug: "axorax";
