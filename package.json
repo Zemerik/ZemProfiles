@@ -35,7 +35,7 @@
     "@qwikdev/astro": "^0.5.2",
     "@stackblitz/sdk": "^1.9.0",
     "@vercel/edge": "^1.1.0",
-    "astro": "^4.13.2",
+    "astro": "^4.16.3",
     "astro-auto-import": "^0.4.2",
     "astro-embed": "^0.7.2",
     "dotenv": "^16.4.5",
