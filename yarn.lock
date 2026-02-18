@@ -158,13 +158,13 @@
   dependencies:
     prismjs "^1.30.0"
 
-"@astrojs/rss@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.npmjs.org/@astrojs/rss/-/rss-4.0.5.tgz"
-  integrity sha512-IyJVL6z09AQtxbgLaAwebT3T5YKe4oTHDesqydJv1KLHw+zEzzMCFuuNsEyxjiqu7df9+DDCpDXLj/WRiEUXvw==
+"@astrojs/rss@^4.0.15":
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-4.0.15.tgz#7884adaf52da45e747175e5e225e18ce7e08743d"
+  integrity sha512-uXO/k6AhRkIDXmRoc6xQpoPZrimQNUmS43X4+60yunfuMNHtSRN5e/FiSi7NApcZqmugSMc5+cJi8ovqgO+qIg==
   dependencies:
-    fast-xml-parser "^4.2.7"
-    kleur "^4.1.5"
+    fast-xml-parser "^5.3.3"
+    piccolore "^0.1.3"
 
 "@astrojs/sitemap@^3.1.6":
   version "3.1.6"
@@ -2844,12 +2844,12 @@ fast-json-stable-stringify@^2.0.0:
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
 
-fast-xml-parser@^4.2.7:
-  version "4.4.1"
-  resolved "https://registry.npmjs.org/fast-xml-parser/-/fast-xml-parser-4.4.1.tgz"
-  integrity sha512-xkjOecfnKGkSsOwtZ5Pz7Us/T6mrbPQrq0nh+aCO5V9nk5NLWmasAHumTKjiPJPWANe+kAZ84Jc8ooJkzZ88Sw==
+fast-xml-parser@^5.3.3:
+  version "5.3.6"
+  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-5.3.6.tgz#85a69117ca156b1b3c52e426495b6de266cb6a4b"
+  integrity sha512-QNI3sAvSvaOiaMl8FYU4trnEzCwiRr8XMWgAHzlrWpTSj+QaCSvOf1h82OEP1s4hiAXhnbXSyFWCf4ldZzZRVA==
   dependencies:
-    strnum "^1.0.5"
+    strnum "^2.1.2"
 
 fastq@^1.6.0:
   version "1.17.1"
@@ -3666,11 +3666,6 @@ kleur@^3.0.3:
   version "3.0.3"
   resolved "https://registry.npmjs.org/kleur/-/kleur-3.0.3.tgz"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
-
-kleur@^4.1.5:
-  version "4.1.5"
-  resolved "https://registry.npmjs.org/kleur/-/kleur-4.1.5.tgz"
-  integrity sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==
 
 lilconfig@^2.1.0:
   version "2.1.0"
@@ -4805,6 +4800,11 @@ pg-types@^2.2.0:
     postgres-date "~1.0.4"
     postgres-interval "^1.1.0"
 
+piccolore@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/piccolore/-/piccolore-0.1.3.tgz#ef33f6180e6a37b35fe12a45765a900171cfaedc"
+  integrity sha512-o8bTeDWjE086iwKrROaDf31K0qC/BENdm15/uH9usSC/uZjJOKb2YGiVHfLY4GhwsERiPI1jmwI2XrA7ACOxVw==
+
 picocolors@^1.0.0, picocolors@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.1.1.tgz#3d321af3eab939b083c8f929a1d12cda81c26b6b"
@@ -5737,10 +5737,10 @@ strip-indent@^1.0.1:
   dependencies:
     get-stdin "^4.0.1"
 
-strnum@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/strnum/-/strnum-1.0.5.tgz"
-  integrity sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==
+strnum@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/strnum/-/strnum-2.1.2.tgz#a5e00ba66ab25f9cafa3726b567ce7a49170937a"
+  integrity sha512-l63NF9y/cLROq/yqKXSLtcMeeyOfnSQlfMSlzFt/K73oIaD8DGaQWd7Z34X9GPiKqP5rbSh84Hl4bOlLcjiSrQ==
 
 stubs@^3.0.0:
   version "3.0.0"
@@ -6446,7 +6446,7 @@ yoga-wasm-web@^0.3.3:
   dependencies:
     "@astrojs/mdx" "^4.3.10"
     "@astrojs/partytown" "^2.1.0"
-    "@astrojs/rss" "^4.0.5"
+    "@astrojs/rss" "^4.0.15"
     "@astrojs/sitemap" "^3.1.6"
     "@astrojs/tailwind" "^5.1.5"
     "@astrojs/vercel" "^9.0.0"
@@ -6483,7 +6483,7 @@ yoga-wasm-web@^0.3.3:
   dependencies:
     "@astrojs/mdx" "^4.3.10"
     "@astrojs/partytown" "^2.1.0"
-    "@astrojs/rss" "^4.0.5"
+    "@astrojs/rss" "^4.0.15"
     "@astrojs/sitemap" "^3.1.6"
     "@astrojs/tailwind" "^5.1.5"
     "@astrojs/vercel" "^9.0.0"
