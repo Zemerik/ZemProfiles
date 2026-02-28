@@ -158,13 +158,13 @@
   dependencies:
     prismjs "^1.30.0"
 
-"@astrojs/rss@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.npmjs.org/@astrojs/rss/-/rss-4.0.5.tgz"
-  integrity sha512-IyJVL6z09AQtxbgLaAwebT3T5YKe4oTHDesqydJv1KLHw+zEzzMCFuuNsEyxjiqu7df9+DDCpDXLj/WRiEUXvw==
+"@astrojs/rss@^4.0.15":
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/@astrojs/rss/-/rss-4.0.15.tgz#7884adaf52da45e747175e5e225e18ce7e08743d"
+  integrity sha512-uXO/k6AhRkIDXmRoc6xQpoPZrimQNUmS43X4+60yunfuMNHtSRN5e/FiSi7NApcZqmugSMc5+cJi8ovqgO+qIg==
   dependencies:
-    fast-xml-parser "^4.2.7"
-    kleur "^4.1.5"
+    fast-xml-parser "^5.3.3"
+    piccolore "^0.1.3"
 
 "@astrojs/sitemap@^3.1.6":
   version "3.1.6"
@@ -2834,12 +2834,18 @@ fast-json-stable-stringify@^2.0.0:
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
 
-fast-xml-parser@^4.2.7:
-  version "4.4.1"
-  resolved "https://registry.npmjs.org/fast-xml-parser/-/fast-xml-parser-4.4.1.tgz"
-  integrity sha512-xkjOecfnKGkSsOwtZ5Pz7Us/T6mrbPQrq0nh+aCO5V9nk5NLWmasAHumTKjiPJPWANe+kAZ84Jc8ooJkzZ88Sw==
+fast-xml-builder@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/fast-xml-builder/-/fast-xml-builder-1.0.0.tgz#a485d7e8381f1db983cf006f849d1066e2935241"
+  integrity sha512-fpZuDogrAgnyt9oDDz+5DBz0zgPdPZz6D4IR7iESxRXElrlGTRkHJ9eEt+SACRJwT0FNFrt71DFQIUFBJfX/uQ==
+
+fast-xml-parser@^5.3.3:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-5.4.1.tgz#0c81b8ecfb3021e5ad83aa3df904af19a05bc601"
+  integrity sha512-BQ30U1mKkvXQXXkAGcuyUA/GA26oEB7NzOtsxCDtyu62sjGw5QraKFhx2Em3WQNjPw9PG6MQ9yuIIgkSDfGu5A==
   dependencies:
-    strnum "^1.0.5"
+    fast-xml-builder "^1.0.0"
+    strnum "^2.1.2"
 
 fastq@^1.6.0:
   version "1.17.1"
@@ -3647,11 +3653,6 @@ kleur@^3.0.3:
   version "3.0.3"
   resolved "https://registry.npmjs.org/kleur/-/kleur-3.0.3.tgz"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
-
-kleur@^4.1.5:
-  version "4.1.5"
-  resolved "https://registry.npmjs.org/kleur/-/kleur-4.1.5.tgz"
-  integrity sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==
 
 lilconfig@^2.1.0:
   version "2.1.0"
@@ -5733,10 +5734,10 @@ strip-indent@^1.0.1:
   dependencies:
     get-stdin "^4.0.1"
 
-strnum@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/strnum/-/strnum-1.0.5.tgz"
-  integrity sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==
+strnum@^2.1.2:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/strnum/-/strnum-2.2.0.tgz#8b582b637e4621f62ff714493e0ce30846f903a6"
+  integrity sha512-Y7Bj8XyJxnPAORMZj/xltsfo55uOiyHcU2tnAVzHUnSJR/KsEX+9RoDeXEnsXtl/CX4fAcrt64gZ13aGaWPeBg==
 
 stubs@^3.0.0:
   version "3.0.0"
@@ -6442,7 +6443,7 @@ yoga-wasm-web@^0.3.3:
   dependencies:
     "@astrojs/mdx" "^4.3.10"
     "@astrojs/partytown" "^2.1.0"
-    "@astrojs/rss" "^4.0.5"
+    "@astrojs/rss" "^4.0.15"
     "@astrojs/sitemap" "^3.1.6"
     "@astrojs/tailwind" "^5.1.5"
     "@astrojs/vercel" "^9.0.0"
@@ -6479,7 +6480,7 @@ yoga-wasm-web@^0.3.3:
   dependencies:
     "@astrojs/mdx" "^4.3.10"
     "@astrojs/partytown" "^2.1.0"
-    "@astrojs/rss" "^4.0.5"
+    "@astrojs/rss" "^4.0.15"
     "@astrojs/sitemap" "^3.1.6"
     "@astrojs/tailwind" "^5.1.5"
     "@astrojs/vercel" "^9.0.0"
