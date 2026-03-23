@@ -41,7 +41,7 @@
     "dotenv": "^16.4.5",
     "fuse.js": "^7.0.0",
     "globe.gl": "^2.32.4",
-    "markdown-it": "^14.1.0",
+    "markdown-it": "^14.1.1",
     "mdx": "^0.3.1",
     "octokit": "^4.1.1",
     "og-img": "^0.2.1",
