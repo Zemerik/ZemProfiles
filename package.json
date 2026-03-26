@@ -27,7 +27,7 @@
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.5",
-    "@astrojs/vercel": "^9.0.0",
+    "@astrojs/vercel": "^10.0.2",
     "@builder.io/qwik": "^1.9.0",
     "@fontsource/inconsolata": "^5.0.8",
     "@google-analytics/data": "^4.7.0",
